@@ -10,7 +10,7 @@ const Navbar = () => {
       <ul className="flex flex-row items-center justify-center min-h-max w-3/5 gap-4">
         <li>
           <Link
-            href={"#"}
+            href={"/"}
             className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
           >
             Home
@@ -18,7 +18,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href={"#"}
+            href={"/articles"}
             className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
           >
             Articles
@@ -26,7 +26,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href={"#"}
+            href={"/contacts"}
             className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
           >
             Contact
@@ -34,7 +34,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href={"#"}
+            href={"/about"}
             className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
           >
             About
