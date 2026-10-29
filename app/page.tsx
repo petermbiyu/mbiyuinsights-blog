@@ -1,10 +1,10 @@
-import RecentPost from "@/componebts/home/recentPost";
+import RecentPost from "@/components/home/recentPost";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 mx-0 sm:mx-5 mb:mx-10 lg:mx-20 bg-zinc-50 font-sans dark:bg-black">
-      <header className="text-center mt-[5%]">
+    <div>
+      <header className="text-center text-zinc-800 mt-[5%]">
         <h1 className="font-bold text-2xl sm:text-3xl mb:text-4xl lg:text-5xl mb-5">
           Welcome to MbiyuInsight!
         </h1>
