@@ -26,7 +26,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href={"/contacts"}
+            href={"/contact"}
             className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
           >
             Contact
