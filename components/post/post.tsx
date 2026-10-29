@@ -20,9 +20,22 @@ const BlogPost = async ({ postParams }: BlogPostProp) => {
         height={650}
         className="mx-auto w-auto h-auto border-3 border-zinc-700"
       />
-      <div className="space-x-5">
+      <div className="space-x-5 ">
         <span>{post.author}</span>
         <span>{new Date(post.date).toLocaleDateString()}</span>
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+        tenetur totam unde distinctio, cum rerum quod quos reiciendis dolores
+        repudiandae saepe sequi, numquam laborum nobis fugiat corrupti eveniet
+        modi itaque maxime debitis quae explicabo, illo rem. Quis, voluptatem?
+        Ab alias, non, quidem, ea quam et doloremque ex omnis vero amet aperiam!
+        Velit sapiente magni autem pariatur ab itaque, atque harum! Commodi
+        eligendi libero temporibus ex excepturi aspernatur, nostrum repellat in
+        quibusdam veritatis perspiciatis dolorum vero. Distinctio mollitia
+        consequuntur ex enim labore debitis tempore iste assumenda nobis, omnis
+        quae atque et vitae numquam culpa reiciendis aut voluptatem quasi rerum
+        velit? Ipsam.
       </div>
     </div>
   );
