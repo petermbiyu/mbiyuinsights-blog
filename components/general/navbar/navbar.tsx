@@ -1,47 +1,46 @@
 import Link from "next/link";
+import { LuMenu } from "react-icons/lu";
+import Nav from "./mobNav";
+
+export const navLinks = [
+  { label: "Home", url: "/" },
+  { label: "Articles", url: "/articles" },
+  { label: "Contact", url: "/contact" },
+  { label: "About", url: "/about" },
+];
 
 const Navbar = () => {
   return (
-    <nav className="flex flex-row px-20 text-zinc-50 bg-zinc-500 justify-between items-center h-16.5">
-      <div className="w-1/5 font-bold text-2xl">
-        Mbiyu<span className="text-amber-400">Insights</span>
-      </div>
+    <nav className="fixed top-0 left-0 w-full h-16 md:h-18">
+      <div className="flex flex-row px-5 md:px-20 text-zinc-50 bg-zinc-500 justify-between items-center h-full">
+        <div className="w-1/5 font-bold text-2xl">
+          Mbiyu<span className="text-amber-400">Insights</span>
+        </div>
+        <div className="hidden md:block w-4/5">
+          <div className="flex items-end flex-col md:flex-row justify-between min-h-max">
+            <ul className="flex flex-row items-center justify-center h-full w-4/5 gap-4">
+              {navLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.url}
+                    className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="text-right w-1/5">Dashboard</div>
+          </div>
+        </div>
 
-      <ul className="flex flex-row items-center justify-center min-h-max w-3/5 gap-4">
-        <li>
-          <Link
-            href={"/"}
-            className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
-          >
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/articles"}
-            className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
-          >
-            Articles
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/contact"}
-            className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
-          >
-            Contact
-          </Link>
-        </li>
-        <li>
-          <Link
-            href={"/about"}
-            className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
-          >
-            About
-          </Link>
-        </li>
-      </ul>
-      <div className="w-1/5 text-right">Dashboard</div>
+        <div className="md:hidden">
+          <LuMenu size={25} className="hover:cursor-pointer" />
+        </div>
+      </div>
+      <div>
+        <Nav />
+      </div>
     </nav>
   );
 };

@@ -10,18 +10,17 @@ const RecentPost = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-center text-zinc-800 mb-5">
         Recent Posts
       </h1>
-      <div className="flex gap-5  flex-wrap items-center justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-6xl mx-5 sm:mx-auto items-center justify-between">
         {blog_data.slice(0, 3).map((post, index) => (
           <div
             key={index}
-            className="flex flex-col bg-white shadow-[0px_4px_12px_0px_rgba(0,0,0,0.1)] w-87.5 rounded-sm"
+            className="flex flex-col bg-white shadow-[0px_4px_12px_0px_rgba(0,0,0,0.1)] w-full mx-auto md:max-w-87.5 rounded-sm"
           >
             <Image
               src={assets.blog_pic_1}
               alt="blog-img"
               width={350}
-              height={200}
-              className="rounded-t-sm"
+              className="object-cover w-full h-auto rounded-t-sm"
             />
             <div className="flex flex-col space-y-2 px-2">
               <p className="text-sm">21/10/2026</p>
