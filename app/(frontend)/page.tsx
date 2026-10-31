@@ -1,4 +1,4 @@
-import RecentPost from "@/components/home/recentPost";
+import RecentPost from "@/components/front/home/recentPost";
 import Image from "next/image";
 
 export default function Home() {

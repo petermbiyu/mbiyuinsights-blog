@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import BlogPost from "@/components/post/post";
+import BlogPost from "@/components/front/post/post";
 
 const Post = ({ params }: { params: Promise<{ id: string }> }) => {
   return (
