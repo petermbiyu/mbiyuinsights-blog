@@ -9,24 +9,18 @@ const Articles = () => {
   return (
     <div>
       <div className="mt-5">
-        <span className="flex flex-row justify-center max-w-max items-center mx-auto gap-1  text-xl md:text-2xl font-semibold text-center text-zinc-800 mb-5">
+        <span className="flex flex-row justify-center max-w-max items-center mx-auto gap-1  text-xl font-semibold text-center text-zinc-800 mb-5">
           <Link
             href={"#"}
             style={{ padding: "4px 12px", width: "5rem" }}
-            className={
-              active
-                ? "border-b-2 border-amber-500 text-amber-500"
-                : "text-zinc-600 px-4 py-2"
-            }
+            className={active ? "text-amber-500" : "text-zinc-600 px-4 py-2"}
           >
             All
           </Link>
           <Link
             href={"#"}
             className={
-              !active
-                ? "px-3 py-1 text-amber-600"
-                : " text-zinc-500 border-b-2 border-zinc-500 px-3 py-1"
+              !active ? "px-3 py-1 text-amber-600" : " text-zinc-500 px-3 py-1"
             }
           >
             Academic
@@ -34,15 +28,13 @@ const Articles = () => {
           <Link
             href={"#"}
             className={
-              !active
-                ? "px-3 py-1 text-amber-600"
-                : "text-zinc-500 border-b-2 border-zinc-500 px-3 py-1"
+              !active ? "px-3 py-1 text-amber-600" : "text-zinc-500 px-3 py-1"
             }
           >
             Lifestyle
           </Link>
         </span>
-        <div className="flex gap-5 flex-wrap  items-stretch justify-evenly">
+        <div className="flex gap-5 flex-wrap  items-stretch justify-center">
           {blog_data.map((post, index) => (
             <div
               key={index}

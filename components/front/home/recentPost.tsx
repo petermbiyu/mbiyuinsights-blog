@@ -10,7 +10,7 @@ const RecentPost = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-center text-zinc-800 mb-5">
         Recent Posts
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-6xl mx-5 sm:mx-auto items-center justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-6xl mx-5 sm:mx-auto items-center justify-center">
         {blog_data.slice(0, 3).map((post, index) => (
           <div
             key={index}
