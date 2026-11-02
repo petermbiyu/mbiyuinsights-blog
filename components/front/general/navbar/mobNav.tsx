@@ -45,13 +45,16 @@ const Nav = ({ isOpen, setIsOpen }: mobileNavProp) => {
             About
           </Link>
         </li>
+        <li className="mt-20">
+          <Link
+            href={"/dashboard"}
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center hover:font-semibold justify-center w-20 mx-auto"
+          >
+            Dashboard
+          </Link>
+        </li>
       </ul>
-      <div
-        className="text-center w-full mb-[20%]"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        Dashboard
-      </div>
     </div>
   );
 };

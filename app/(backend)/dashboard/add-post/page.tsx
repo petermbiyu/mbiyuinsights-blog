@@ -1,6 +1,29 @@
-import React from "react";
+"use client";
+import axios from "axios";
+import dynamic from "next/dynamic";
+import { useMemo, useRef, useState } from "react";
+
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const AddPost = () => {
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("academic");
+  const [publish, setPublish] = useState(false);
+  const [image, setImage] = useState<null | File>(null);
+
+  const config = useMemo(
+    () => ({
+      placeholder: "Start writing your post...",
+      theme: "light",
+      style: { background: "#ffff", color: "gray" },
+    }),
+    [],
+  );
+
   return (
     <div>
       <h1 className="text-2xl md:text-3xl font-bold text-zinc-700 py-5 text-center">
@@ -16,6 +39,8 @@ const AddPost = () => {
             <input
               type="text"
               name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               placeholder="Type here..."
               className="w-full px-4 py-2 text-[1rem] outline-none bg-zinc-50"
             />
@@ -28,7 +53,9 @@ const AddPost = () => {
             <textarea
               name="description"
               placeholder="Type here..."
-              rows={2}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              rows={3}
               className="w-full px-4 py-2 text-[1rem] outline-none bg-zinc-50 resize-none"
             ></textarea>
           </div>
@@ -40,6 +67,7 @@ const AddPost = () => {
             <input
               type="file"
               name="image"
+              onChange={(e) => setImage(e.target.files?.[0] || null)}
               className="w-full px-4 py-2 text-[1rem] outline-none bg-zinc-50 resize-none"
             />
           </div>
@@ -48,11 +76,17 @@ const AddPost = () => {
               Content
             </label>
             <br />
-            <textarea
+            <JoditEditor
+              ref={editor}
+              value={content}
+              config={config}
+              onChange={(newContent) => setContent(newContent)}
+            />
+            {/* <textarea
               name="content"
               rows={5}
               className="w-full px-4 py-2 text-[1rem] outline-none bg-zinc-50 resize-none"
-            ></textarea>
+            ></textarea> */}
           </div>
           <div className="py-2">
             <label htmlFor="category" className="text-xl font-semibold">
@@ -61,7 +95,8 @@ const AddPost = () => {
             <br />
             <select
               name="category"
-              defaultValue={"academic"}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-3 text-[1rem] border-none outline-none bg-zinc-50"
             >
               <option disabled hidden>
@@ -77,6 +112,9 @@ const AddPost = () => {
             </label>
             <input
               type="checkbox"
+              checked={publish}
+              id="publish"
+              onChange={(e) => setPublish(e.target.checked)}
               name={"publish"}
               className="inline-block mx-5"
             />
