@@ -8,29 +8,21 @@ const Posts = () => {
         All Posts
       </h1>
       <div>
-        <table className="w-8/10 mx-auto ">
-          <thead>
-            <tr className="text-center">
-              <th className="border border-zinc-400 w-1/8">No.</th>
-              <th className="border border-zinc-400 w-4/8">Title</th>
-              <th className="border border-zinc-400 w-1/8">Date</th>
-              <th className="border border-zinc-400 w-2/8 " colSpan={3}>
-                Action
-              </th>
-            </tr>
-          </thead>
-          <Suspense
-            fallback={
-              <tbody>
-                <tr>
-                  <td colSpan={6}>Loadig posts</td>
-                </tr>
-              </tbody>
-            }
-          >
+        <Suspense fallback={<p>Loadig posts</p>}>
+          <table className="w-8/10 mx-auto ">
+            <thead>
+              <tr className="text-center">
+                <th className="border border-zinc-400 w-1/8">No.</th>
+                <th className="border border-zinc-400 w-4/8">Title</th>
+                <th className="border border-zinc-400 w-1/8">Date</th>
+                <th className="border border-zinc-400 w-2/8 " colSpan={3}>
+                  Action
+                </th>
+              </tr>
+            </thead>
             <AllPosts />
-          </Suspense>
-        </table>
+          </table>
+        </Suspense>
       </div>
     </div>
   );

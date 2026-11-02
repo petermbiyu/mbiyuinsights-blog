@@ -17,14 +17,13 @@ const EditPost = () => {
   const [publish, setPublish] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const config = useMemo(
     () => ({
-      placeholder: "Start writing here...",
-      theme: "dark",
-      style: { background: "gray", color: "white" },
+      theme: "light",
+      style: { background: "white", color: "gray" },
     }),
     [],
   );
@@ -48,14 +47,12 @@ const EditPost = () => {
         console.error("Unknown_error", error);
         alert("Unexpected error");
       }
-    } finally {
-      setLoading(false);
     }
   };
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       if (!title || !description || !content || !category) {
         console.log("All fields are required");
@@ -67,6 +64,7 @@ const EditPost = () => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("category", category);
+      formData.append("content", content);
       formData.append("publish", publish ? "1" : "0");
       if (image) {
         formData.append("image", image);
@@ -80,12 +78,14 @@ const EditPost = () => {
 
       if (response.data.success) {
         toast.success("Updated post successfully");
-        router.push("/dashboard/post/page");
+        router.push("/dashboard/post");
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error(error.response?.data.error);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -94,6 +94,7 @@ const EditPost = () => {
       fetchPost();
     }
   }, [postId]);
+
   return (
     <div>
       <h1 className="text-2xl md:text-3xl font-bold text-zinc-700 py-5 text-center">
@@ -204,7 +205,8 @@ const EditPost = () => {
             type="submit"
             className="my-5 px-5 py-3 font-semibold rounded-sm bg-zinc-500 text-amber-400 border cursor-pointer border-zinc-500 "
           >
-            Update Post
+            {" "}
+            {loading ? "Updating Post..." : "Update Post"}
           </button>
         </form>
       </div>
