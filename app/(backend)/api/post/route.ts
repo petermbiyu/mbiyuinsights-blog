@@ -13,10 +13,12 @@ export async function POST(req: NextRequest) {
     const description = formData.get("description") as string;
     const category = formData.get("category") as string;
     const content = formData.get("content") as string;
-    const publish = formData.get("publish") as any;
+    const publish = (formData.get("publish") as string) || null;
     const image = formData.get("image") as File;
 
-    if (!title || !description || !category || !content || !publish || !image) {
+    const isPublished = publish === "1";
+
+    if (!title || !description || !category || !content || !image) {
       return NextResponse.json(
         {
           success: false,
@@ -41,7 +43,7 @@ export async function POST(req: NextRequest) {
         title,
         description,
         content,
-        publish,
+        publish: isPublished,
         category,
         slug,
         imageUrl: imageData.secure_url,

@@ -2,12 +2,14 @@
 import axios from "axios";
 import dynamic from "next/dynamic";
 import { useMemo, useRef, useState } from "react";
+import { toast } from "react-hot-toast";
 
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 const AddPost = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
+  const [upLoading, setUpLoading] = useState(false);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -24,13 +26,60 @@ const AddPost = () => {
     [],
   );
 
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setUpLoading(true);
+    try {
+      if (!title || !content || !description || !image) {
+        console.log("All fields are required");
+        toast.error("All fields are required", {
+          style: { background: "gray", color: "red" },
+        });
+        return;
+      }
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("content", content);
+      formData.append("category", category);
+      formData.append("publish", publish ? "1" : "0");
+      formData.append("image", image);
+
+      const response = await axios.post("/api/post", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      setTitle("");
+      setContent("");
+      setDescription("");
+      setPublish(false);
+      setImage(null);
+      if (response.data.success) {
+        toast.success("Article successfully published");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data.message, {
+          style: { background: "gray", color: "red" },
+        });
+      }
+    } finally {
+      setUpLoading(false);
+    }
+  };
+
   return (
     <div>
       <h1 className="text-2xl md:text-3xl font-bold text-zinc-700 py-5 text-center">
         Add Post
       </h1>
       <div>
-        <form className="w-full max-w-8/10 px-4 border-zinc-500 mx-auto bg-zinc-200">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-8/10 px-4 border-zinc-500 mx-auto bg-zinc-200"
+        >
           <div className="py-2">
             <label htmlFor="title" className="text-xl font-semibold">
               Title
@@ -123,7 +172,7 @@ const AddPost = () => {
             type="submit"
             className="my-5 px-5 py-3 font-semibold rounded-sm bg-zinc-500 text-amber-400 border cursor-pointer border-zinc-500 "
           >
-            Add Post
+            {upLoading ? "Adding Post" : "Add Post"}
           </button>
         </form>
       </div>

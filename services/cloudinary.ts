@@ -11,7 +11,7 @@ export async function uploadToCloudinary(
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
   const base64 = buffer.toString("base64");
-  const dataURL = `data:${file.type}; base64,${base64}`;
+  const dataURL = `data:${file.type};base64,${base64}`;
   try {
     const result = await cloudinary.uploader.upload(dataURL, {
       folder: "mbiyuinsights",
