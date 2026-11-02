@@ -16,6 +16,7 @@ const AddPost = () => {
   const [category, setCategory] = useState("academic");
   const [publish, setPublish] = useState(false);
   const [image, setImage] = useState<null | File>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const config = useMemo(
     () => ({
@@ -56,6 +57,10 @@ const AddPost = () => {
       setDescription("");
       setPublish(false);
       setImage(null);
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
       if (response.data.success) {
         toast.success("Article successfully published");
       }
@@ -116,6 +121,7 @@ const AddPost = () => {
             <input
               type="file"
               name="image"
+              ref={fileInputRef}
               onChange={(e) => setImage(e.target.files?.[0] || null)}
               className="w-full px-4 py-2 text-[1rem] outline-none bg-zinc-50 resize-none"
             />
