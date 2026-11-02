@@ -26,3 +26,11 @@ export async function uploadToCloudinary(
     throw new Error("failed to upload image");
   }
 }
+
+export async function deleteFromCloudinary(public_id: string) {
+  try {
+    await cloudinary.uploader.destroy(public_id);
+  } catch (error) {
+    console.error("Cloudinary_delete_error", error);
+  }
+}

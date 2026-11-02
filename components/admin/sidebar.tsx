@@ -16,7 +16,7 @@ const Sidebar = () => {
         All Posts
       </Link>
       <Link
-        href={"/dashboard/add-post"}
+        href={"/dashboard/add"}
         className="inline-block border-gray text-zinc-50 hover:text-zinc-500 transition-all duration-300 ease-in font-semibold text-center py-3 bg-amber-500"
       >
         Add Posts

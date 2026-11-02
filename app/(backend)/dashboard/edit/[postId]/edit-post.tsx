@@ -1,7 +1,9 @@
+"use client";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
@@ -15,6 +17,8 @@ const EditPost = () => {
   const [publish, setPublish] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   const config = useMemo(
     () => ({
@@ -29,12 +33,13 @@ const EditPost = () => {
 
   const fetchPost = async () => {
     try {
-      const { data } = await axios.get(`/api/posts/${postId}`);
+      const { data } = await axios.get(`/api/post/${postId}`);
+      const post = data.post;
 
-      setContent(data.content);
-      setTitle(data.title);
-      setDescription(data.description);
-      setPreview(data.image);
+      setContent(post.content);
+      setTitle(post.title);
+      setDescription(post.description);
+      setPreview(post.imageUrl);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios_error", error);
@@ -43,6 +48,8 @@ const EditPost = () => {
         console.error("Unknown_error", error);
         alert("Unexpected error");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,22 +58,52 @@ const EditPost = () => {
 
     try {
       if (!title || !description || !content || !category) {
+        console.log("All fields are required");
+        toast.error("All fields are required!");
+        return;
       }
 
       const formData = new FormData();
-    } catch (error) {}
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("category", category);
+      formData.append("publish", publish ? "1" : "0");
+      if (image) {
+        formData.append("image", image);
+      }
+
+      const response = await axios.patch(`/api/post/${postId}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      if (response.data.success) {
+        toast.success("Updated post successfully");
+        router.push("/dashboard/post/page");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        toast.error(error.response?.data.error);
+      }
+    }
   };
 
   useEffect(() => {
-    fetchPost();
-  }, []);
+    if (postId) {
+      fetchPost();
+    }
+  }, [postId]);
   return (
     <div>
       <h1 className="text-2xl md:text-3xl font-bold text-zinc-700 py-5 text-center">
         Edit Post
       </h1>
       <div>
-        <form className="w-full max-w-8/10 px-4 border-zinc-500 mx-auto bg-zinc-200">
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-8/10 px-4 border-zinc-500 mx-auto bg-zinc-200"
+        >
           <div className="py-2">
             <label htmlFor="title" className="text-xl font-semibold">
               Title
@@ -106,7 +143,15 @@ const EditPost = () => {
               onChange={(e) => setImage(e.target.files?.[0] || null)}
               className="w-full px-4 py-2 text-[1rem] outline-none bg-zinc-50 resize-none"
             />
-            <Image src={preview} alt="preview" width={300} height={300} />
+            {preview && (
+              <Image
+                src={preview}
+                alt="preview"
+                width={150}
+                height={100}
+                className="mt-5"
+              />
+            )}
           </div>
           <div className="py-2">
             <label htmlFor="content" className="text-xl font-semibold">

@@ -1,5 +1,5 @@
 import AllPosts from "@/components/admin/allPosts";
-import React from "react";
+import { Suspense } from "react";
 
 const Posts = () => {
   return (
@@ -19,7 +19,17 @@ const Posts = () => {
               </th>
             </tr>
           </thead>
-          <AllPosts />
+          <Suspense
+            fallback={
+              <tbody>
+                <tr>
+                  <td colSpan={6}>Loadig posts</td>
+                </tr>
+              </tbody>
+            }
+          >
+            <AllPosts />
+          </Suspense>
         </table>
       </div>
     </div>
