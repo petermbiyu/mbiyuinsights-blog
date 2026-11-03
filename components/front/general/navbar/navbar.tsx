@@ -15,13 +15,13 @@ export const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="fixed top-0 left-0 w-full h-16 md:h-18 z-50">
+    <nav className="fixed top-0 left-0 w-full h-16 z-50">
       <div className="flex flex-row px-5 md:px-20 text-zinc-50 bg-zinc-500 justify-between items-center h-full">
         <div className="md:w-1/5 font-bold text-2xl">
           Mbiyu<span className="text-amber-400">Insights</span>
         </div>
         <div className="hidden md:block w-4/5 ">
-          <div className="flex items-end flex-col md:flex-row justify-between min-h-max">
+          <div className="flex items-center flex-col md:flex-row justify-between">
             <ul className="flex flex-row items-center justify-center h-full w-4/5 gap-4">
               {navLinks.map((link, index) => (
                 <li key={index}>
@@ -34,8 +34,14 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <div className="text-right w-1/5">
-              <Link href={"/dashboard"}>Dashboard</Link>
+            <div className=" flex items-center text-[1rem] space-x-3 w-1/5">
+              <Link
+                href={"/dashboard"}
+                className="boarder rounded-sm bg-amber-500 px-3 py-2 inline-block"
+              >
+                Dashboard
+              </Link>
+              <Link href={"/auth"}>Sign In</Link>
             </div>
           </div>
         </div>
