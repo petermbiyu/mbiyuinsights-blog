@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState } from "react";
 import { toast } from "react-hot-toast";
 
@@ -10,6 +11,7 @@ const AddPost = () => {
   const editor = useRef(null);
   const [content, setContent] = useState("");
   const [upLoading, setUpLoading] = useState(false);
+  const router = useRouter();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -63,6 +65,7 @@ const AddPost = () => {
       }
       if (response.data.success) {
         toast.success("Article successfully published");
+        router.push("/dashboard/post");
       }
     } catch (error) {
       if (axios.isAxiosError(error)) {

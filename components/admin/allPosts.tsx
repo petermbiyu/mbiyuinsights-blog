@@ -1,38 +1,22 @@
 import { prisma } from "@/lib/db";
-import { PostProp } from "@/types/post";
-import Link from "next/link";
+import AllPostsData from "./allPostsData";
 
 const AllPosts = async () => {
   const posts = await prisma.post.findMany({ orderBy: { createdAt: "desc" } });
-
-  if (!posts || posts.length === 0) {
-    return (
-      <tbody>
-        <tr>
-          <td colSpan={6}>No posts found</td>
-        </tr>
-      </tbody>
-    );
-  }
   return (
-    <tbody>
-      {posts.map((post, index) => {
-        return (
-          <tr key={index}>
-            <td className="border">{index + 1}</td>
-            <td className="border">{post.title}</td>
-            <td className="border">
-              {new Date(post.createdAt).toLocaleDateString()}
-            </td>
-            <td className="border">
-              <Link href={`/dashboard/edit/${post.id}`}>edit</Link>
-            </td>
-            <td className="border">{post.publish ? "publish" : "Unpublish"}</td>
-            <td className="border">delete</td>
-          </tr>
-        );
-      })}
-    </tbody>
+    <table className="w-8/10 mx-auto ">
+      <thead>
+        <tr className="text-center bg-zinc-400 text-zinc-50">
+          <th className="border border-zinc-400 py-2 px-2 w-4">No.</th>
+          <th className="border border-zinc-400 py-2 ">Title</th>
+          <th className="border border-zinc-400 py-2 w-25">Date</th>
+          <th className="border border-zinc-400 w-10 py-2 " colSpan={2}>
+            Action
+          </th>
+        </tr>
+      </thead>
+      <AllPostsData posts={posts} />
+    </table>
   );
 };
 

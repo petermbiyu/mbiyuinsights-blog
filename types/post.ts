@@ -1,13 +1,13 @@
 export interface PostProp {
-  id: string;
+  id: number;
   title: string;
   content: string;
   description: string;
   category: string;
   imageUrl: string;
-  imagePUblic_Id: string;
+  imagePublicId: string;
   publish: boolean;
   slug: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

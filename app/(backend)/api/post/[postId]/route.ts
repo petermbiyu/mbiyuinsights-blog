@@ -136,3 +136,42 @@ export async function PATCH(
     );
   }
 }
+
+export async function DELETE(
+  _req: NextRequest,
+  { params }: { params: Promise<{ postId: number }> },
+) {
+  try {
+    const { postId } = await params;
+    if (!postId) {
+      return NextResponse.json(
+        { success: false, message: "Invalid ID" },
+        { status: 400 },
+      );
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { id: Number(postId) },
+    });
+    if (!post) {
+      return NextResponse.json(
+        { success: false, message: "failed to delete post" },
+        { status: 400 },
+      );
+    }
+
+    await deleteFromCloudinary(post.imagePublicId);
+    await prisma.post.delete({ where: { id: post.id } });
+
+    return NextResponse.json(
+      { success: true, message: "Post deleted successfully" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("delete_error_message", error);
+    return NextResponse.json({
+      success: false,
+      message: "error deleting post",
+    });
+  }
+}
