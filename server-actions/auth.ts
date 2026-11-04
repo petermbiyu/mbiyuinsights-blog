@@ -17,12 +17,12 @@ import { redirect } from "next/navigation";
 //   return result;
 // }
 
-export async function signOut() {
-  const result = await auth.api.signOut({
-    headers: await headers(),
-  });
-  return result;
-}
+// export async function signOut() {
+//   const result = await auth.api.signOut({
+//     headers: await headers(),
+//   });
+//   return result;
+// }
 
 // using social providers
 export async function social(provider: "github" | "google") {
