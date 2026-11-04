@@ -4,6 +4,9 @@ import { LuMenu } from "react-icons/lu";
 import { LiaTimesSolid } from "react-icons/lia";
 import Nav from "./mobNav";
 import { useState } from "react";
+import { MdLogout } from "react-icons/md";
+import { authClient } from "@/lib/auth-client";
+import SignOut from "@/components/shared/sighOut";
 
 export const navLinks = [
   { label: "Home", url: "/" },
@@ -14,6 +17,7 @@ export const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session, isPending } = authClient.useSession();
   return (
     <nav className="fixed top-0 left-0 w-full h-16 z-50">
       <div className="flex flex-row px-5 md:px-20 text-zinc-50 bg-zinc-500 justify-between items-center h-full">
@@ -34,14 +38,17 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-            <div className=" flex items-center text-[1rem] space-x-3 w-1/5">
-              <Link
-                href={"/dashboard"}
-                className="boarder rounded-sm bg-amber-500 px-3 py-2 inline-block"
-              >
-                Dashboard
-              </Link>
-              <Link href={"/auth"}>Sign In</Link>
+            <div className=" flex items-center text-[1rem] justify-end space-x-3 w-1/5">
+              {!isPending && session && (
+                <Link
+                  href={"/dashboard"}
+                  className="boarder rounded-sm bg-amber-500 px-3 py-2 inline-block"
+                >
+                  Dashboard
+                </Link>
+              )}
+              {!isPending &&
+                (session ? <SignOut /> : <Link href={"/auth"}>Sign In</Link>)}
             </div>
           </div>
         </div>
