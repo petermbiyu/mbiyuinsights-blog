@@ -1,5 +1,6 @@
 import RecentPost from "@/components/front/home/recentPost";
 import Image from "next/image";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -25,7 +26,9 @@ export default function Home() {
         </div>
       </header>
       <div>
-        <RecentPost />
+        <Suspense fallback={<p>Loading recent post</p>}>
+          <RecentPost />
+        </Suspense>
       </div>
     </div>
   );

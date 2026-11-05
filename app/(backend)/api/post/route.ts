@@ -6,6 +6,46 @@ import {
   uploadToCloudinary,
 } from "@/services/cloudinary";
 
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+
+    const default_Limit = 3;
+    const limit = Number(searchParams.get("limit")) || default_Limit;
+    const cursor = Number(searchParams.get("cursor"));
+
+    const posts = await prisma.post.findMany({
+      orderBy: { createdAt: "desc" },
+      take: limit + 1,
+      cursor: cursor ? { id: cursor } : undefined,
+      skip: cursor ? 1 : 0,
+      select: {
+        id: true,
+        description: true,
+        title: true,
+        imageUrl: true,
+        category: true,
+        createdAt: true,
+        slug: true,
+      },
+    });
+    const hasMore = posts.length > limit;
+    const items = hasMore ? posts.slice(0, limit) : posts;
+    const nextCursor = hasMore ? items[items.length - 1].id : null;
+
+    return NextResponse.json(
+      { success: true, posts: items, nextCursor },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("Error getting post: ", error);
+    return NextResponse.json(
+      { success: false, message: "Error fetching posts" },
+      { status: 500 },
+    );
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();

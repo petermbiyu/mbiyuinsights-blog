@@ -14,7 +14,7 @@ export async function GET() {
         slug: true,
         createdAt: true,
       },
-      take: 3,
+      take: 6,
     });
     return NextResponse.json({ success: true, posts }, { status: 200 });
   } catch (error) {
