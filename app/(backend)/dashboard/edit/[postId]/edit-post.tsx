@@ -13,8 +13,8 @@ const EditPost = () => {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
-  const [publish, setPublish] = useState("");
+  const [category, setCategory] = useState("academic");
+  const [publish, setPublish] = useState("0");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
@@ -38,6 +38,8 @@ const EditPost = () => {
       setContent(post.content);
       setTitle(post.title);
       setDescription(post.description);
+      setCategory(post.category);
+      setPublish(post.publish ? "1" : "0");
       setPreview(post.imageUrl);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -56,7 +58,7 @@ const EditPost = () => {
     try {
       if (!title || !description || !content || !category) {
         console.log("All fields are required");
-        toast.error("All fields are required!");
+        toast.error("All fields are required! Check items");
         return;
       }
 
@@ -65,7 +67,7 @@ const EditPost = () => {
       formData.append("description", description);
       formData.append("category", category);
       formData.append("content", content);
-      formData.append("publish", publish ? "1" : "0");
+      formData.append("publish", publish === "1" ? "1" : "0");
       if (image) {
         formData.append("image", image);
       }

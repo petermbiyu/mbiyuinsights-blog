@@ -11,3 +11,13 @@ export interface PostProp {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface FetchPostProp {
+  pageParam?: string | null;
+  limit?: number;
+}
+
+export interface FetchPostRes {
+  posts: PostProp[];
+  nextCursor: number;
+}

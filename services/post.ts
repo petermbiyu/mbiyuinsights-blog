@@ -1,5 +1,19 @@
+import { FetchPostProp, FetchPostRes } from "@/types/post";
 import axios from "axios";
 import toast from "react-hot-toast";
+
+export async function fetchPosts({
+  pageParam,
+  limit,
+}: FetchPostProp): Promise<FetchPostRes> {
+  const response = await axios.get("api/posts", {
+    params: {
+      cursor: pageParam,
+      limit,
+    },
+  });
+  return response.data;
+}
 
 export async function deletePost(postId: number) {
   try {

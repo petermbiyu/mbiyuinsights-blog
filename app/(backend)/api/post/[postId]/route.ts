@@ -111,12 +111,12 @@ export async function PATCH(
     const post = await prisma.post.update({
       where: { id: Number(postId) },
       data: {
-        title: title ?? postExist.title,
-        description: description ?? postExist.description,
-        category: category ?? postExist.category,
-        content: content ?? postExist.content,
-        slug: slug ?? postExist.slug,
-        publish: isPublished ?? postExist.publish,
+        title: title,
+        description: description,
+        category: category,
+        content: content,
+        slug: slug,
+        publish: isPublished,
         ...(imageData && {
           imageUrl: imageData.secure_url,
           imagePublicId: imageData.public_id,
