@@ -10,11 +10,11 @@ export default function LayoutAdmin({
     <>
       <div>
         <Navbar />
-        <div className="flex items-stretch flex-row pt-18">
+        <div className="flex items-stretch flex-row pt-16">
           <div className="w-1/5 flex-stretch flex-1 bg-zinc-500">
             <Sidebar />
           </div>
-          <div className="w-4/5 min-h-[calc(100vh-75px)]">{children}</div>
+          <div className="w-4/5 min-h-[calc(100vh-65px)]">{children}</div>
         </div>
       </div>
     </>

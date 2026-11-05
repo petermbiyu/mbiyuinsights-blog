@@ -13,9 +13,6 @@ const RecentPost = async () => {
   const { posts }: { posts: PostProp[] } = await res.json();
   return (
     <div className="mt-5">
-      <h1 className="text-3xl md:text-4xl font-bold text-center text-zinc-800 mb-5">
-        Recent Posts
-      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 max-w-6xl mx-5 sm:mx-auto items-stretch justify-center">
         {posts.map((post, index) => (
           <div

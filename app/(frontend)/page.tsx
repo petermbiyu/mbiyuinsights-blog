@@ -1,4 +1,5 @@
 import RecentPost from "@/components/front/home/recentPost";
+import Postcard from "@/skeletons/postcard";
 import Image from "next/image";
 import { Suspense } from "react";
 
@@ -26,9 +27,13 @@ export default function Home() {
         </div>
       </header>
       <div>
-        <Suspense fallback={<p>Loading recent post</p>}>
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-zinc-800 mb-5">
+          Recent Posts
+        </h1>
+        <Postcard />
+        {/* <Suspense fallback={<Postcard />}>
           <RecentPost />
-        </Suspense>
+        </Suspense> */}
       </div>
     </div>
   );
