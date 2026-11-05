@@ -6,7 +6,7 @@ export async function fetchPosts({
   pageParam,
   limit,
 }: FetchPostProp): Promise<FetchPostRes> {
-  const response = await axios.get("api/posts", {
+  const response = await axios.get("api/post", {
     params: {
       cursor: pageParam,
       limit,

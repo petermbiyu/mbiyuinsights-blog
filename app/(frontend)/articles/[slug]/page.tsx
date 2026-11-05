@@ -1,7 +1,7 @@
-import { Suspense } from "react";
 import BlogPost from "@/components/front/post/post";
+import { Suspense } from "react";
 
-const Post = ({ params }: { params: Promise<{ id: string }> }) => {
+const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
   return (
     <div>
       <Suspense fallback={<p>Loading...</p>}>

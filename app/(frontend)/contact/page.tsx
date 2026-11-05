@@ -8,8 +8,8 @@ import {
 
 const Contact = () => {
   return (
-    <div>
-      <div className="flex flex-col gap-2 md:gap-6 lg:gap-10  mt-[5%] md:flex-row px-2">
+    <div className="flex relative items-center grow justify-center">
+      <div className="flex flex-col gap-2 md:gap-6 lg:gap-10 md:flex-row px-2">
         <div className="w-full flex flex-col justify-between items-stretch md:w-1/2">
           <div>
             <h2 className="text-3xl font-bold">Want to reach us?</h2>

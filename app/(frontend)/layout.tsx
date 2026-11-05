@@ -9,7 +9,9 @@ export default async function Layout({
   return (
     <main className="flex flex-col">
       <Navbar />
-      <div className="min-h-[calc(100vh-90px)] pt-16">{children}</div>
+      <div className="flex px-5 md:px-20 mx-auto min-h-[calc(100vh-84px)] pt-16">
+        {children}
+      </div>
       <Footer />
     </main>
   );

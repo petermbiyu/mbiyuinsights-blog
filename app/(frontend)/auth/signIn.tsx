@@ -44,7 +44,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="w-full max-w-130 flex items-center justify-center mx-auto min-h-[calc(100vh-148px)]">
+    <div className="w-full max-w-130 border flex items-center justify-center mx-auto min-h-[calc(100vh-148px)]">
       <div className="w-full bg-zinc-200 p-2 md:p-4">
         <h1 className="text-2xl font-bold text-center">
           {isSignIn ? "Create Account" : "Sign In"}
