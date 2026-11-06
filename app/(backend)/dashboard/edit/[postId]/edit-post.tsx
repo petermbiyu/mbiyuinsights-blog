@@ -1,4 +1,5 @@
 "use client";
+import LaodingLayout from "@/layout/laodingLayout";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -17,7 +18,8 @@ const EditPost = () => {
   const [publish, setPublish] = useState("0");
   const [image, setImage] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   const config = useMemo(
@@ -49,12 +51,14 @@ const EditPost = () => {
         console.error("Unknown_error", error);
         alert("Unexpected error");
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    setIsSending(true);
     try {
       if (!title || !description || !content || !category) {
         console.log("All fields are required");
@@ -87,7 +91,7 @@ const EditPost = () => {
         toast.error(error.response?.data.error);
       }
     } finally {
-      setLoading(false);
+      setIsSending(false);
     }
   };
 
@@ -96,6 +100,14 @@ const EditPost = () => {
       fetchPost();
     }
   }, [postId]);
+  if (isLoading) {
+    return (
+      <LaodingLayout>
+        <span className="mr-3 size-5 animate-spin inline-block w-6 h-6 border-5 border-zinc-500/50 border-t-zinc-500/90 rounded-full "></span>
+        <span className="text-xl font-semibold">Loading Edit Page...</span>
+      </LaodingLayout>
+    );
+  }
 
   return (
     <div>
@@ -208,7 +220,7 @@ const EditPost = () => {
             className="my-5 px-5 py-3 font-semibold rounded-sm bg-zinc-500 text-amber-400 border cursor-pointer border-zinc-500 "
           >
             {" "}
-            {loading ? "Updating Post..." : "Update Post"}
+            {isSending ? "Updating Post..." : "Update Post"}
           </button>
         </form>
       </div>
