@@ -1,15 +1,21 @@
 import Link from "next/link";
+import { Suspense } from "react";
+
 import {
   FaFacebookF,
   FaWhatsapp,
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import ContactForm from "./contactForm";
 
 const Contact = () => {
   return (
-    <div className="flex relative items-center border grow justify-center">
-      <div className="flex flex-col gap-2 md:gap-6 lg:gap-10 md:flex-row px-2">
+    <div className="relative">
+      <h1 className="mb-5 md:mb-15 lg:mb-20 text-center text-2xl md:text-3xl font-bold text-zinc-700">
+        Contact Us
+      </h1>
+      <div className="flex flex-col gap-2  md:gap-6 lg:gap-10 md:flex-row px-2">
         <div className="w-full flex flex-col justify-between items-stretch md:w-1/2">
           <div>
             <h2 className="text-3xl font-bold">Want to reach us?</h2>
@@ -48,35 +54,9 @@ const Contact = () => {
         </div>
         <div className="w-full md:w-1/2">
           <h2 className="text-3xl font-bold">Send us a message</h2>
-          <form>
-            <div>
-              <input
-                type="text"
-                placeholder="Enter your name..."
-                name="username"
-                className="outline-none border-b-2 border-zinc-700 w-full md:w-6/8 py-2"
-              />
-            </div>
-            <div className="mt-5">
-              <input
-                type="email"
-                placeholder="Enter your email..."
-                name="username"
-                className="outline-none border-b-2 border-zinc-700 w-full md:w-6/8 py-2"
-              />
-            </div>
-            <div className="mt-5">
-              <textarea
-                name="message"
-                placeholder="Enter your message..."
-                rows={1}
-                className="h-auto min-h-[31h] max-h-40 overflow-y-hidden field-sizing-content resize-none outline-none border-b-2 border-zinc-700 w-full md:w-6/8 py-2"
-              ></textarea>
-            </div>
-            <button className="px-6 py-3 mt-5 bg-zinc-700 text-zinc-50 font-semibold rounded-b-sm hover:bg-zinc-500 transition-all duration-300 ease-in-out">
-              Submit
-            </button>
-          </form>
+          <Suspense fallback={<p>Loading</p>}>
+            <ContactForm />
+          </Suspense>
         </div>
       </div>
     </div>

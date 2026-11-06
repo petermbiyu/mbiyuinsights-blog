@@ -8,7 +8,7 @@ const Article = () => {
         <div className="bg-zinc-500 h-8 w-full max-w-80"></div>
       </div>
       <div className=" mt-3">
-        <div className="w-full h-90 bg-zinc-500 mx-auto rounded-sm"></div>
+        <div className="w-full h-100 bg-zinc-500 mx-auto rounded-sm"></div>
       </div>
       <div className="mt-5">
         <span className="w-40 h-4 bg-zinc-500 inline-block "></span>

@@ -1,14 +1,10 @@
 "use client";
-import { blog_data } from "@/public/assets/assets";
 import { FaArrowRight } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { useInfinitePosts } from "@/custom-hook/usePost";
 import Postcard from "@/skeletons/postcard";
 const Articles = () => {
-  const [active, setActive] = useState(true);
-
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfinitePosts({ limit: 6 });
 

@@ -22,6 +22,12 @@ const Sidebar = () => {
         Add Posts
       </Link>
       <Link
+        href={"/dashboard/contact"}
+        className="inline-block border-gray text-zinc-50 hover:text-zinc-500 transition-all duration-300 ease-in font-semibold text-center py-3 bg-amber-500"
+      >
+        Messages
+      </Link>
+      <Link
         href={"/dashboard/subscription"}
         className="inline-block border-gray text-zinc-50 hover:text-zinc-500 transition-all duration-300 ease-in font-semibold text-center py-3 bg-amber-500"
       >

@@ -3,7 +3,7 @@ interface LimitProp {
 }
 const Postcard = ({ limit }: LimitProp) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 space-x-2 space-y-5 max-w-6xl mx-5 sm:mx-auto items-stretch justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-5 sm:mx-auto items-stretch justify-center">
       {[...Array(limit)].map((_, index) => (
         <div
           key={index}
@@ -11,7 +11,8 @@ const Postcard = ({ limit }: LimitProp) => {
         >
           {/* image */}
           <div className="relative bg-zinc-400 h-48 w-full rounded-t-sm"></div>
-          <div className="flex flex-col space-y-2 px-2 mt-2">
+          {/* content */}
+          <div className="flex flex-col space-y-2 px-2 my-2">
             <p className="text-sm">
               <span className="w-20 h-4 bg-zinc-400 inline-block"></span>{" "}
               <span className="w-20 h-4 bg-zinc-400 inline-block"></span>

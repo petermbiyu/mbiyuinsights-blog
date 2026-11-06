@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
   return (
-    <div>
+    <div className=" w-full">
       <Suspense fallback={<Article />}>
         <BlogPost postParams={params} />
       </Suspense>

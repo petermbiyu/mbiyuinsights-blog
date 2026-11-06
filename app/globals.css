@@ -22,3 +22,11 @@ body {
   font-size: 20px;
   font-weight: 600;
 }
+.blog-post p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.blog-post span {
+  font-size: 1rem;
+  font-weight: 400;
+}
