@@ -30,10 +30,9 @@ export default function Home() {
         <h1 className="text-3xl md:text-4xl font-bold text-center text-zinc-800 mb-5">
           Recent Posts
         </h1>
-        <Postcard />
-        {/* <Suspense fallback={<Postcard />}>
+        <Suspense fallback={<Postcard limit={3} />}>
           <RecentPost />
-        </Suspense> */}
+        </Suspense>
       </div>
     </div>
   );
