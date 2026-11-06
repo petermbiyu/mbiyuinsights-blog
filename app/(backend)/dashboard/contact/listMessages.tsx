@@ -54,6 +54,7 @@ const ViewMessages = () => {
               })}
             </td>
             <td className="border border-zinc-400 w-15 py-2">
+              <Link href={`/dashboard/contact/${message.id}`}></Link>
               {message.isRead ? (
                 <MdMarkEmailRead className="mx-auto text-green-500" />
               ) : (
@@ -61,9 +62,7 @@ const ViewMessages = () => {
               )}
             </td>
             <td className="border  border-zinc-400 w-15 py-2  text-red-500">
-              <Link href={`/dashboard/contact/${message.id}`}>
-                <FaTrash className="mx-auto" />
-              </Link>
+              <FaTrash className="mx-auto" />
             </td>
           </tr>
         ))}
