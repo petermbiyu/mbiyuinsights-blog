@@ -15,19 +15,20 @@ export default function Home() {
           education and lifestyle.
         </h2>
 
-        <div className="flex-1 flex-col  sm:flex-row my-10 items-center  max-w-max mx-auto h-10">
+        <div className="flex flex-nowrap sm:flex-row my-10 items-center border rounded-sm max-w-max mx-auto h-10">
           <input
             type="text"
             placeholder="Enter your email..."
-            className="outline-none h-full max-w-80 px-5 border"
+            className="outline-none h-full w-full rounded-l-sm max-w-80 px-5 "
           />
-          <button className="bg-amber-400 inline-block h-full text-[1rem] border md:border-l-0 text-zinc-700 font-bold text-center px-2">
+          <button className="bg-amber-400 inline-block h-full rounded-r-sm text-[1rem] border-l text-zinc-700 font-bold text-center px-2">
             Subscribe
           </button>
         </div>
       </header>
+
       <div>
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-zinc-800 mb-5">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-zinc-800 sm:mb-5">
           Recent Posts
         </h1>
         <Suspense fallback={<Postcard limit={3} />}>

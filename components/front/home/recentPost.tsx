@@ -13,8 +13,8 @@ const RecentPost = async () => {
   }
   const { posts }: { posts: PostProp[] } = await res.json();
   return (
-    <div className="mt-5">
-      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-5 sm:mx-auto items-stretch justify-center">
+    <div className="mt-1">
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl md:mx-5 sm:mx-auto items-stretch justify-center">
         {posts.map((post, index) => (
           <div
             key={index}
@@ -34,7 +34,7 @@ const RecentPost = async () => {
                 {" - "}
                 <span>{post.category}</span>
               </p>
-              <h2 className="font-semibold text-2xl line-clamp-2">
+              <h2 className="font-semibold text-xl md:text-2xl line-clamp-2">
                 {post.title}
               </h2>
               <p className="font-light text-[16px] line-clamp-3">

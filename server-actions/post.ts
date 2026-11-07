@@ -1,3 +1,4 @@
+"use server";
 import { prisma } from "@/lib/db";
 
 export async function PostBySlug(slug: string) {
@@ -16,4 +17,24 @@ export async function PostBySlug(slug: string) {
   });
   if (!post) return null;
   return post;
+}
+
+export async function SearchPost(query: string) {
+  if (!query || query.trim() === "") return [];
+  try {
+    const posts = await prisma.post.findMany({
+      where: {
+        OR: [
+          { title: { contains: query, mode: "insensitive" } },
+          { content: { contains: query, mode: "insensitive" } },
+        ],
+      },
+      take: 10,
+      select: { id: true, title: true, slug: true },
+    });
+    return posts;
+  } catch (error) {
+    console.error("database error:", error);
+    return [];
+  }
 }

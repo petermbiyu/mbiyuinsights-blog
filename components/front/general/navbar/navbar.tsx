@@ -7,6 +7,7 @@ import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
 import SignOut from "@/components/shared/sighOut";
+import { useSearch } from "@/context/searchContext";
 
 export const navLinks = [
   { label: "Home", url: "/" },
@@ -17,6 +18,7 @@ export const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { setIsSearchOpen } = useSearch();
   const { data: session, isPending } = authClient.useSession();
   return (
     <nav className="fixed top-0 left-0 w-full h-16 z-50">
@@ -28,7 +30,13 @@ const Navbar = () => {
           <div className="flex items-center flex-col md:flex-row justify-between">
             <ul className="flex flex-row items-center justify-center h-full w-4/5 gap-4">
               <li>
-                <FaSearch size={18} className="font-bold" />
+                <button
+                  onClick={() => setIsSearchOpen(true)}
+                  className="hover:font-semibold flex items-center gap-1 w-20"
+                >
+                  <FaSearch size={16} className="font-bold inline-block" />{" "}
+                  <span className="hidden md:inline-block">Search</span>
+                </button>
               </li>
               {navLinks.map((link, index) => (
                 <li key={index}>

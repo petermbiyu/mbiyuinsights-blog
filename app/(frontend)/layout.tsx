@@ -1,5 +1,6 @@
 import Navbar from "@/components/front/general/navbar/navbar";
 import Footer from "@/components/front/general/footer/footer";
+import SearchModel from "@/components/model/searchModel";
 
 export default async function Layout({
   children,
@@ -9,7 +10,8 @@ export default async function Layout({
   return (
     <main className="flex flex-col">
       <Navbar />
-      <div className="px-5 w-full flex items-center justify-center md:px-20 mx-auto min-h-[calc(100vh-84px)] pt-16">
+      <SearchModel />
+      <div className="px-2 w-full flex items-center justify-center md:px-20 mx-auto min-h-[calc(100vh-84px)] pt-16">
         {children}
       </div>
       <Footer />
