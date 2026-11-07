@@ -4,7 +4,7 @@ import { LuMenu } from "react-icons/lu";
 import { LiaTimesSolid } from "react-icons/lia";
 import Nav from "./mobNav";
 import { useState } from "react";
-import { MdLogout } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
 import SignOut from "@/components/shared/sighOut";
 
@@ -27,6 +27,9 @@ const Navbar = () => {
         <div className="hidden md:block w-4/5 ">
           <div className="flex items-center flex-col md:flex-row justify-between">
             <ul className="flex flex-row items-center justify-center h-full w-4/5 gap-4">
+              <li>
+                <FaSearch size={18} className="font-bold" />
+              </li>
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <Link
