@@ -160,8 +160,9 @@ const AddPost = () => {
               <option disabled hidden>
                 Select
               </option>
-              <option value={"academic"}>Academic</option>
-              <option value={"lifestyle"}>Lifestyle</option>
+              <option value={"Academic"}>Academic</option>
+              <option value={"Lifestyle"}>Lifestyle</option>
+              <option value={"Technology"}>Technology</option>
             </select>
           </div>
           <div className="py-2">
