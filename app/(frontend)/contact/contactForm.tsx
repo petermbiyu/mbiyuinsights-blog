@@ -47,7 +47,7 @@ const ContactForm = () => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           name="username"
-          className="outline-none border-b-2 border-zinc-700 w-full md:w-7/8 py-2"
+          className="outline-none border-b-2 border-zinc-700 w-full py-2"
         />
       </div>
       <div className="mt-5">
@@ -57,7 +57,7 @@ const ContactForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           name="username"
-          className="outline-none border-b-2 border-zinc-700 w-full md:w-7/8 py-2"
+          className="outline-none border-b-2 border-zinc-700 w-full py-2"
         />
       </div>
       <div className="mt-5">
@@ -67,7 +67,7 @@ const ContactForm = () => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={1}
-          className="h-auto min-h-[31h] max-h-40 overflow-y-hidden field-sizing-content resize-none outline-none border-b-2 border-zinc-700 w-full md:w-7/8 py-2"
+          className="h-auto min-h-[31h] max-h-40 overflow-y-hidden field-sizing-content resize-none outline-none border-b-2 border-zinc-700 w-full py-2"
         ></textarea>
       </div>
       <button className="px-6 py-3 mt-5 bg-zinc-700 text-zinc-50 font-semibold rounded-sm hover:bg-zinc-500 transition-all duration-300 ease-in-out">

@@ -28,7 +28,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:block w-4/5 ">
           <div className="flex items-center flex-col md:flex-row justify-between">
-            <ul className="flex flex-row items-center justify-center h-full w-4/5 ">
+            <ul className="flex flex-row items-center justify-center h-full w-4/5 min-[950]:gap-4">
               <li>
                 <button
                   onClick={() => setIsSearchOpen(true)}
