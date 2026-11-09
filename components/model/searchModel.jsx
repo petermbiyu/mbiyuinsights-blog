@@ -47,7 +47,7 @@ const SearchModel = () => {
                 <span key={index} onClick={handleClose}>
                   <Link
                     href={`/articles/${item.slug}`}
-                    className="line-clamp-1 border-b-2 pt-2 border-b-zinc-400 text-left w-full inline-block"
+                    className="line-clamp-1 border-b-2 pt-2 border-b-zinc-400 text-left w-full"
                   >
                     {`${index + 1}. ${item.title}`}
                   </Link>

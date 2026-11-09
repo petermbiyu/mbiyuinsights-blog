@@ -14,7 +14,7 @@ import Image from "next/image";
 const Contact = () => {
   return (
     <div className="relative  w-full  min-h-[calc(100vh-148px)]">
-      <h1 className="mb-5 md:mb-15 lg:mb-20 text-center text-3xl md:text-4xl font-bold text-zinc-700">
+      <h1 className="mb-5 text-center text-3xl md:text-4xl font-bold text-zinc-700">
         Contact Us
       </h1>
       <div className="flex flex-col gap-2  md:gap-6 lg:gap-10 md:flex-row items-stretch justify-center">
