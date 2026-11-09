@@ -31,9 +31,9 @@ const AllPostsData = ({ posts }: Props) => {
       {posts.map((post, index) => {
         return (
           <tr key={index} className="odd:bg-zinc-300 even:bg-zinc-100 ">
-            <td className="border border-zinc-400 py-2 px-2 text-center">{`${index + 1}.`}</td>
+            <td className="border border-zinc-400 py-1 px-1 text-center">{`${index + 1}.`}</td>
             <td className="border border-zinc-400 py-2 px-2">{post.title}</td>
-            <td className="border border-zinc-400 py-2 text-center">
+            <td className="border border-zinc-400 hidden sm:table-cell py-2 text-center">
               {new Date(post.createdAt).toLocaleDateString()}
             </td>
             <td className="border border-zinc-400 w-15 py-2">

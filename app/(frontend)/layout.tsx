@@ -11,7 +11,7 @@ export default async function Layout({
     <main className="flex flex-col">
       <Navbar />
       <SearchModel />
-      <div className="px-2 w-full flex items-center justify-center md:px-20 mx-auto min-h-[calc(100vh-84px)] pt-16">
+      <div className="w-full flex items-center justify-center px-5 md:px-20 mx-auto min-h-[calc(100vh-84px)] pt-16">
         {children}
       </div>
       <Footer />

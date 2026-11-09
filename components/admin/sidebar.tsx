@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-row md:flex-col gap-5">
       <Link
         href={"/dashboard"}
         className="inline-block border-gray text-zinc-50 hover:text-zinc-500 transition-all duration-300 ease-in font-semibold text-center py-3 bg-amber-500"

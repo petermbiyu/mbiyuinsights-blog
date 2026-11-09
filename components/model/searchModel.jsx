@@ -2,6 +2,7 @@
 import React from "react";
 import { useSearch } from "@/context/searchContext";
 import Link from "next/link";
+import { LiaTimesSolid } from "react-icons/lia";
 
 const SearchModel = () => {
   const {
@@ -19,20 +20,25 @@ const SearchModel = () => {
     setIsSearchOpen(false);
   };
   return (
-    <div className="border fixed flex items-center justify-center inset-0 top-16 w-full h-[calc(100vh-66px)] z-50">
+    <div className="border fixed flex items-center justify-center inset-0 top-16 w-full h-[calc(100vh-66px)] z-50 ">
       <div
         onClick={handleClose}
         className="fixed inset-0 top-16 w-full h-[calc(100vh-66px)] bg-zinc-800/80 "
       />
-      <div className="bg-zinc-200 border z-50 w-full max-w-120 p-5">
+      <div className="relative bg-zinc-200 border z-50 w-full max-w-120 px-5 py-15 rounded-sm">
+        <LiaTimesSolid
+          className="absolute right-5 top-3 cursor-pointer"
+          size={22}
+          onClick={handleClose}
+        />
         <input
           type="text"
           placeholder="Search Article"
-          className="w-full outline-none border-2 border-zinc-400 px-4 py-2 rounded-sm bg-zinc-50"
+          className="w-full outline-none border-2 border-zinc-400 px-4 py-3 rounded-sm bg-zinc-50"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <div className="mt-5 border-2 border-zinc-400 px-4 py-2 rounded-sm bg-zinc-100 text-zinc-700">
+        <div className="mt-5 border-2 border-zinc-400 px-4 py-3 rounded-sm bg-zinc-100 text-zinc-700">
           {isLoading && <span>Searching...</span>}
           {!isLoading && posts.length === 0 && <span>No results found</span>}
           {posts.length > 0 && (

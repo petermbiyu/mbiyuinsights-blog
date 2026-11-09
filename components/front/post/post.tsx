@@ -16,12 +16,14 @@ const BlogPost = async ({ postParams }: BlogPostProp) => {
       <h1 className="text-2xl md:text-3xl font-bold py-5 text-zinc-700 text-center">
         {post.title}
       </h1>
-      <div className="relative w-full h-100">
+      <div className="overflow-hidden rounded-sm shadow-md mb-6">
         <Image
           src={post.imageUrl}
           alt={post.title}
-          fill
-          className="mx-auto w-auto h-auto border-3 border-zinc-700"
+          width="1200"
+          height="675"
+          className="w-full aspect-video object-cover hover:scale-105 transition-transform duration-300"
+          // className="mx-auto w-auto h-auto border-3 border-zinc-700"
         />
       </div>
 

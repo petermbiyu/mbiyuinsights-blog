@@ -8,22 +8,16 @@ const Footer = () => {
       <div>&copy; 2026 MbiyuInsights. All rights reserved</div>
       <div className="flex items-center flex-col md:flex-row gap-2 mt-5 sm:mt-0 justify-center md:gap-5">
         <Link
-          href={"#"}
+          href={"/terms"}
           className="hover:text-amber-400 transition-colors duration-300 ease-in"
         >
           Terms & Conditions
         </Link>
         <Link
-          href={"#"}
+          href={"/privacy"}
           className="hover:text-amber-400 transition-colors duration-300 ease-in"
         >
           Privacy Policy
-        </Link>
-        <Link
-          href={"#"}
-          className="hover:text-amber-400 transition-colors duration-300 ease-in"
-        >
-          Data privacy
         </Link>
       </div>
     </div>

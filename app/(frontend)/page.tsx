@@ -5,8 +5,8 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <div>
-      <header className="text-center text-zinc-800 mt-[5%]">
+    <div className="w-full">
+      <header className="text-center text-zinc-800 mt-10">
         <h1 className="font-bold text-2xl sm:text-3xl mb:text-4xl lg:text-5xl mb-5">
           Welcome to MbiyuInsight!
         </h1>
@@ -27,13 +27,15 @@ export default function Home() {
         </div>
       </header>
 
-      <div>
+      <div className="w-full mx-auto">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-zinc-800 sm:mb-5">
           Recent Posts
         </h1>
-        <Suspense fallback={<Postcard limit={3} />}>
-          <RecentPost />
-        </Suspense>
+        <div className="max-w-6xl mx-auto">
+          <Suspense fallback={<Postcard limit={3} />}>
+            <RecentPost />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

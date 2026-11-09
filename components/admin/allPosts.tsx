@@ -4,12 +4,14 @@ import AllPostsData from "./allPostsData";
 const AllPosts = async () => {
   const posts = await prisma.post.findMany({ orderBy: { createdAt: "desc" } });
   return (
-    <table className="w-8/10 mx-auto ">
+    <table className="w-full md:w-8/10 mx-auto ">
       <thead>
         <tr className="text-center bg-zinc-400 text-zinc-50">
-          <th className="border border-zinc-400 py-2 px-2 w-4">No.</th>
+          <th className="border border-zinc-400 py-1 px-1 w-4">No.</th>
           <th className="border border-zinc-400 py-2 ">Title</th>
-          <th className="border border-zinc-400 py-2 w-25">Date</th>
+          <th className="border hidden sm:table-cell border-zinc-400 py-2 w-25">
+            Date
+          </th>
           <th className="border border-zinc-400 w-10 py-2 " colSpan={2}>
             Action
           </th>

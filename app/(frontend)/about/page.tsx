@@ -1,7 +1,7 @@
 const About = () => {
   return (
-    <div>
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-zinc-700 text-center my-5">
+    <div className="relative  w-full  min-h-[calc(100vh-148px)]">
+      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-zinc-700 text-center mb-5">
         About Mbiyuinsights
       </h1>
       <div className="text-zinc-700 letter-spacing-1 mx:5 md:px-0 px-5 ">

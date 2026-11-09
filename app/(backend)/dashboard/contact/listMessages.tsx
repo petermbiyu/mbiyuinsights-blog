@@ -47,14 +47,16 @@ const ViewMessages = () => {
       <h1 className="text-2xl md:text-3xl font-bold text-zinc-700 text-center">
         Messages
       </h1>
-      <table className="w-8/10 mx-auto ">
+      <table className="w-full sm:w-8/10 mx-auto">
         <thead>
           <tr className="text-center bg-zinc-400 w-full text-zinc-50">
-            <th className="border border-zinc-400 py-2 px-2 w-1/16">No.</th>
+            <th className="border border-zinc-400  w-1/16">No.</th>
             <th className="border border-zinc-400 py-2 w-5/16">Name</th>
-            <th className="border border-zinc-400 py-2 w-5/16">Email</th>
-            <th className="border border-zinc-400 py-2 w-3/16">Date</th>
-            <th className="border border-zinc-400 py-2 w-2/16" colSpan={2}>
+            <th className="border border-zinc-400 hidden sm:table-cell py-2 w-5/16">
+              Email
+            </th>
+            <th className="border border-zinc-400 py-2 px-2 w-3/16">Date</th>
+            <th className="border border-zinc-400 py-2 px-2 w-2/16" colSpan={2}>
               Action
             </th>
           </tr>
@@ -62,11 +64,13 @@ const ViewMessages = () => {
         <tbody>
           {messages.map((message, index) => (
             <tr key={index} className="odd:bg-zinc-300 even:bg-zinc-100 ">
-              <td className="border border-zinc-400 py-2 px-2">{index + 1}</td>
+              <td className="border border-zinc-400 text-center">
+                {index + 1}
+              </td>
               <td className="border border-zinc-400 py-2 px-2">
                 {message.name}
               </td>
-              <td className="border border-zinc-400 py-2 px-2">
+              <td className="border border-zinc-400 hidden sm:table-cell py-2 px-2">
                 {message.email}
               </td>
               <td className="border border-zinc-400 py-2 text-center">

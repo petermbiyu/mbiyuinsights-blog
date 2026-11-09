@@ -11,11 +11,11 @@ import ContactForm from "./contactForm";
 
 const Contact = () => {
   return (
-    <div className="relative">
-      <h1 className="mb-5 md:mb-15 lg:mb-20 text-center text-2xl md:text-3xl font-bold text-zinc-700">
+    <div className="relative  w-full  min-h-[calc(100vh-148px)]">
+      <h1 className="mb-5 md:mb-15 lg:mb-20 text-center text-3xl md:text-4xl font-bold text-zinc-700">
         Contact Us
       </h1>
-      <div className="flex flex-col gap-2  md:gap-6 lg:gap-10 md:flex-row px-2">
+      <div className="flex flex-col gap-2  md:gap-6 lg:gap-10 md:flex-row items-stretch justify-center px-2">
         <div className="w-full flex flex-col justify-between items-stretch md:w-1/2">
           <div>
             <h2 className="text-3xl font-bold">Want to reach us?</h2>
