@@ -26,19 +26,30 @@ export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   //   a debounce function to create a delay for the user to complete typing the search
+  const trimedQuery = searchQuery.trim();
+  const displayedPost = trimedQuery ? posts : [];
   useEffect(() => {
-    if (!searchQuery.trim()) {
-      setPosts([]);
-      return;
-    }
+    if (!trimedQuery) return;
+    let ignore = false;
+
     const delayDebounce = setTimeout(async () => {
       setIsLoading(true);
-      const result = await SearchPost(searchQuery);
-      setPosts(result);
-      setIsLoading(false);
+      try {
+        const result = await SearchPost(trimedQuery);
+        if (!ignore) {
+          setPosts(result);
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoading(false);
+        }
+      }
     }, 500);
-    return () => clearTimeout(delayDebounce);
-  }, [searchQuery]);
+    return () => {
+      ignore = true;
+      clearTimeout(delayDebounce);
+    };
+  }, [trimedQuery]);
 
   //   const itemList = ["nextjs 15", "nextjs 16", "react server component"];
   //   const filteredItems = itemList.filter((item) =>
@@ -50,7 +61,7 @@ export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         searchQuery,
         setSearchQuery,
-        posts,
+        posts: displayedPost,
         isLoading,
         isSearchOpen,
         setIsSearchOpen,

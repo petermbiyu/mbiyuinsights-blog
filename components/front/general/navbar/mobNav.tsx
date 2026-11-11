@@ -1,5 +1,4 @@
 import SignOut from "@/components/shared/sighOut";
-import { useSearch } from "@/context/searchContext";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 

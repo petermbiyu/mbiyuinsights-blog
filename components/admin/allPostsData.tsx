@@ -4,7 +4,6 @@ import { PostProp } from "@/types/post";
 import { deletePost } from "@/services/post";
 import { useRouter } from "next/navigation";
 import { FaTrash, FaRegEdit } from "react-icons/fa";
-import { MdPublishedWithChanges, MdUnpublished } from "react-icons/md";
 
 type Props = {
   posts: PostProp[];

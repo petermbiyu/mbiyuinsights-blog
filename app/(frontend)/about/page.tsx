@@ -8,10 +8,10 @@ const About = () => {
         <p className="">
           MbiyuInsight is a dedicated digital space built for the people who
           make learning happen — teachers, students, parents, and everyone who
-          believes that education is Kenya's greatest asset. We exist to inform,
-          inspire, and connect the academic community with content that is
-          relevant, practical, and rooted in the realities of our classrooms and
-          campuses.
+          believes that education is Kenya&apos;s greatest asset. We exist to
+          inform, inspire, and connect the academic community with content that
+          is relevant, practical, and rooted in the realities of our classrooms
+          and campuses.
         </p>
         <h2 className="text-2xl font-bold mt-5">What we right about</h2>
         <p>
@@ -26,7 +26,7 @@ const About = () => {
           field. Under our lifestyle pillar, we speak to the human side of
           education: teacher wellbeing, work-life balance, financial literacy
           for educators, student life beyond the lecture hall, campus culture,
-          and the everyday realities of growing up and working in Kenya's
+          and the everyday realities of growing up and working in Kenya&apos;s
           education ecosystem. If it affects the people who teach and learn in
           Kenya, it belongs here.
         </p>

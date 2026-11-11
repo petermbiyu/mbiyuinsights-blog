@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     }
     // upload image to cloudinary
     const imageData: CloudinaryUploadResult = await uploadToCloudinary(image);
-    const post = await prisma.post.create({
+    await prisma.post.create({
       data: {
         title,
         description,

@@ -9,11 +9,11 @@ const page = () => {
       <h2 className="texl-xl font-semibold">Last Updated: 08/11/2026</h2>
       <div className="terms">
         <p>
-          Welcome to MbiyuInsights ("we," "us," or "our"). These Terms and
-          Conditions explain the rules for using our blog at{" "}
-          <span>www.mbiyuinsights.co.ke</span>. By visiting or using this site,
-          you agree to these rules. If you do not agree, please do not use the
-          site.
+          Welcome to MbiyuInsights (&quot;we,&quot; &quot;us,&quot; or
+          &quot;our&quot;). These Terms and Conditions explain the rules for
+          using our blog at <span>www.mbiyuinsights.co.ke</span>. By visiting or
+          using this site, you agree to these rules. If you do not agree, please
+          do not use the site.
         </p>
         <h2>1. Who We Are</h2>
         <p>
@@ -90,9 +90,9 @@ const page = () => {
         <h2>8. Changes to These Terms</h2>
         <p>
           We may update these Terms from time to time. When we do, we will
-          change the "Last updated" date above. Please check this page now and
-          then. If you keep using the site after changes, you accept the new
-          Terms.
+          change the &quot;Last updated&quot; date above. Please check this page
+          now and then. If you keep using the site after changes, you accept the
+          new Terms.
         </p>
         <h2>9. Ending Access</h2>
         <p>

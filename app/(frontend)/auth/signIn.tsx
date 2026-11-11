@@ -15,7 +15,14 @@ const SignIn = () => {
   const handleSocialAuth = async (provider: "github" | "google") => {
     try {
       await social(provider);
-    } catch (error) {}
+    } catch (error: unknown) {
+      console.error("Error Signing using social: ", error);
+      const errMessage =
+        error instanceof Error
+          ? error.message
+          : "Error signing in with socials";
+      toast.error(errMessage);
+    }
   };
 
   // email & pass handler
@@ -38,8 +45,11 @@ const SignIn = () => {
         });
         if (error) toast.error(error?.message || "Error loging In");
       }
-    } catch (error: any) {
-      toast.error(error?.message || "Something went wrong");
+    } catch (error: unknown) {
+      console.error("Error signing in using handle_email_auth: ", error);
+      const errMessage =
+        error instanceof Error ? error.message : "Something went wrong";
+      toast.error(errMessage);
     }
   };
 
@@ -125,7 +135,7 @@ const SignIn = () => {
               {isSignIn ? (
                 <span>Already have an account? </span>
               ) : (
-                <span>Don't have an account? </span>
+                <span>Don&apos;t have an account? </span>
               )}
 
               <span

@@ -32,30 +32,6 @@ const EditPost = () => {
 
   const { postId } = useParams();
 
-  const fetchPost = async () => {
-    try {
-      const { data } = await axios.get(`/api/post/${postId}`);
-      const post = data.post;
-
-      setContent(post.content);
-      setTitle(post.title);
-      setDescription(post.description);
-      setCategory(post.category);
-      setPublish(post.publish ? "1" : "0");
-      setPreview(post.imageUrl);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error("Axios_error", error);
-        toast.error(error.response?.data.error || "Failed to load post");
-      } else {
-        console.error("Unknown_error", error);
-        alert("Unexpected error");
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSending(true);
@@ -96,9 +72,43 @@ const EditPost = () => {
   };
 
   useEffect(() => {
+    let ignore = false;
+
+    const fetchPost = async () => {
+      try {
+        if (!ignore) {
+          const { data } = await axios.get(`/api/post/${postId}`);
+          const post = data.post;
+
+          setContent(post.content);
+          setTitle(post.title);
+          setDescription(post.description);
+          setCategory(post.category);
+          setPublish(post.publish ? "1" : "0");
+          setPreview(post.imageUrl);
+        }
+      } catch (error) {
+        if (!ignore) {
+          if (axios.isAxiosError(error)) {
+            console.error("Axios_error", error);
+            toast.error(error.response?.data.error || "Failed to load post");
+          } else {
+            console.error("Unknown_error", error);
+            alert("Unexpected error");
+          }
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoading(false);
+        }
+      }
+    };
     if (postId) {
       fetchPost();
     }
+    return () => {
+      ignore = true;
+    };
   }, [postId]);
   if (isLoading) {
     return (

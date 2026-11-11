@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
 import { MdMarkEmailRead, MdMarkEmailUnread } from "react-icons/md";
 import Link from "next/link";
@@ -17,21 +17,36 @@ interface MessageProp {
 const ViewMessages = () => {
   const [messages, setMessages] = useState<MessageProp[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/api/contact");
-      if (!response.ok) return null;
-      const data = await response.json();
-      setMessages(data.messages || []);
-    } catch (error: any) {
-      console.error("Error_loading_message", error);
-      toast.error(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
   useEffect(() => {
+    let ignore = false;
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/contact");
+        if (!response.ok) return null;
+        const data = await response.json();
+        if (!ignore) {
+          setMessages(data.messages || []);
+        }
+      } catch (error: unknown) {
+        if (!ignore) {
+          console.error("Error_loading_message", error);
+          const errMessage =
+            error instanceof Error
+              ? error.message
+              : "An unexpected error occurred";
+          toast.error(errMessage);
+        }
+      } finally {
+        if (!ignore) {
+          setIsLoading(false);
+        }
+      }
+    };
     fetchData();
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   if (isLoading) {

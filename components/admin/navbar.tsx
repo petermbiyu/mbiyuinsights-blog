@@ -1,27 +1,10 @@
 "use client";
 import Link from "next/link";
-import { LuMenu } from "react-icons/lu";
-import { LiaTimesSolid } from "react-icons/lia";
-import { useState } from "react";
 import { authClient } from "@/lib/auth-client";
-import { MdLogout } from "react-icons/md";
-import { useRouter } from "next/navigation";
 import SignOut from "../shared/sighOut";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
-  const { data: session, isPending } = authClient.useSession();
-  const handleSignOut = async () => {
-    await authClient.signOut({
-      fetchOptions: {
-        onSuccess: () => {
-          router.push("/");
-          router.refresh();
-        },
-      },
-    });
-  };
+  const { data: session } = authClient.useSession();
   return (
     <nav className="fixed top-0 left-0 w-full h-16">
       <div className="flex flex-row px-5 md:px-20 text-zinc-50 bg-zinc-500 justify-between items-center h-full">

@@ -1,5 +1,3 @@
-import Sidebar from "@/components/admin/sidebar";
-
 const Admin = () => {
   return (
     <div className="border">

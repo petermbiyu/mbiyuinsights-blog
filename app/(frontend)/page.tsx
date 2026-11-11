@@ -1,6 +1,5 @@
 import RecentPost from "@/components/front/home/recentPost";
 import Postcard from "@/skeletons/postcard";
-import Image from "next/image";
 import { Suspense } from "react";
 
 export default function Home() {

@@ -9,10 +9,10 @@ const page = () => {
       <h2 className="texl-xl font-semibold">Last Updated: 08/11/2026</h2>
       <div className="terms">
         <p>
-          MbiyuInsight ("we," "us," or "our") runs the blog at{" "}
-          <span>www.mbiyuinsights.co.ke</span>. This Privacy Policy explains
-          what personal data we collect, why we collect it, and what rights you
-          have. We follow the Kenya Data Protection Act, 2019 .
+          MbiyuInsight (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) runs
+          the blog at <span>www.mbiyuinsights.co.ke</span>. This Privacy Policy
+          explains what personal data we collect, why we collect it, and what
+          rights you have. We follow the Kenya Data Protection Act, 2019 .
         </p>
         <p>By using our site, you agree to this Policy.</p>
         <h2>1. Who We Are</h2>
@@ -129,7 +129,7 @@ const page = () => {
         <ul>
           <li>Access the data we hold about you.</li>
           <li>Correct any wrong data.</li>
-          <li>Delete your data (the "right to be forgotten").</li>
+          <li>Delete your data (the &quot;right to be forgotten&quot;).</li>
           <li>Withdraw consent — just unsubscribe or email us.</li>
           <li>Object to how we use your data.</li>
         </ul>
@@ -144,11 +144,11 @@ const page = () => {
           service providers to keep your data safe. No website is 100% secure,
           but we take reasonable steps to protect your information .
         </p>
-        <h2>10. Children's Privacy</h2>
+        <h2>10. Children&apos;s Privacy</h2>
         <p>
           Our blog is for a general audience. We do not knowingly collect data
-          from children under 18 without a parent's permission. If you believe a
-          child gave us data, contact us and we will delete it.
+          from children under 18 without a parent&apos;s permission. If you
+          believe a child gave us data, contact us and we will delete it.
         </p>
         <h2>11. Links to Other Sites</h2>
         <p>
@@ -158,9 +158,9 @@ const page = () => {
         </p>
         <h2>12. Changes to This Policy</h2>
         <p>
-          We may update this Policy. When we do, we will change the "Last
-          updated" date. Please check this page now and then. If you keep using
-          the site after changes, you accept the new Policy.
+          We may update this Policy. When we do, we will change the &quot;Last
+          updated&quot; date. Please check this page now and then. If you keep
+          using the site after changes, you accept the new Policy.
         </p>
         <h2>13. Contact Us</h2>
         <p>Questions about this Privacy Policy?</p>
