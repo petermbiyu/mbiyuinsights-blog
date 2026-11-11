@@ -139,11 +139,12 @@ export async function PATCH(
 
 export async function DELETE(
   _req: NextRequest,
-  { params }: { params: Promise<{ postId: number }> },
+  { params }: { params: Promise<{ postId: string }> },
 ) {
   try {
     const { postId } = await params;
-    if (!postId) {
+    const numPost = Number(postId);
+    if (!numPost) {
       return NextResponse.json(
         { success: false, message: "Invalid ID" },
         { status: 400 },
@@ -151,7 +152,7 @@ export async function DELETE(
     }
 
     const post = await prisma.post.findUnique({
-      where: { id: Number(postId) },
+      where: { id: Number(numPost) },
     });
     if (!post) {
       return NextResponse.json(
