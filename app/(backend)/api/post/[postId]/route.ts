@@ -143,8 +143,8 @@ export async function DELETE(
 ) {
   try {
     const { postId } = await params;
-    const numPost = Number(postId);
-    if (!numPost) {
+
+    if (!postId) {
       return NextResponse.json(
         { success: false, message: "Invalid ID" },
         { status: 400 },
@@ -152,7 +152,7 @@ export async function DELETE(
     }
 
     const post = await prisma.post.findUnique({
-      where: { id: Number(numPost) },
+      where: { id: Number(postId) },
     });
     if (!post) {
       return NextResponse.json(
