@@ -1,21 +1,12 @@
-import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import { headers } from "next/headers";
+import { Suspense } from "react";
+import Dashboard from "./dashboard";
+import LaodingLayout from "@/layout/laodingLayout";
 
-const Admin = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session) {
-    redirect("/auth");
-  }
+const Admin = () => {
   return (
-    <div className="border">
-      <h1 className="text-2xl md:text-3xl font-bold text-zinc-700 text-center">
-        Admin Panel
-      </h1>
-    </div>
+    <Suspense fallback={<LaodingLayout>Loading Dashbord</LaodingLayout>}>
+      <Dashboard />
+    </Suspense>
   );
 };
 
