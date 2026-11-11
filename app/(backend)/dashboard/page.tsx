@@ -2,6 +2,8 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 const Admin = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
