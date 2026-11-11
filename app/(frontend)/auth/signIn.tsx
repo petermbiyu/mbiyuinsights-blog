@@ -140,7 +140,7 @@ const SignIn = () => {
 
               <span
                 className="text-amber-600 cursor-pointer"
-                onClick={() => setIsSignIn((pre) => !pre)}
+                // onClick={() => setIsSignIn((pre) => !pre)}
               >
                 {isSignIn ? "Login" : "SignUp"}
               </span>
