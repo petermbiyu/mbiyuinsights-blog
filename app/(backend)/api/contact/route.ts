@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { sendMail } from "@/utils/mail";
+import { sendMail } from "@/lib/mail";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_req: NextRequest) {
