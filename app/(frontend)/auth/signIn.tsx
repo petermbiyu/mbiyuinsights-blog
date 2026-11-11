@@ -1,6 +1,7 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { social } from "@/server-actions/auth";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
@@ -16,6 +17,9 @@ const SignIn = () => {
     try {
       await social(provider);
     } catch (error: unknown) {
+      if (isRedirectError(error)) {
+        throw error;
+      }
       console.error("Error Signing using social: ", error);
       const errMessage =
         error instanceof Error
