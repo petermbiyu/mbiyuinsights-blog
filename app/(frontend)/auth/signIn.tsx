@@ -88,9 +88,9 @@ const SignIn = () => {
         </div> */}
         {/* email & pass auth */}
         <form onSubmit={handleEmailAuth}>
-          {/* <h2 className="text-[1rem] font-light text-center mt-3">
+          <h2 className="text-[1rem] font-light text-center mt-3">
             Or continue with
-          </h2> */}
+          </h2>
           {signIn && (
             <div className="mt-1">
               <label htmlFor="name" className="font-semibold">
