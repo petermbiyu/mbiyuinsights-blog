@@ -10,6 +10,54 @@ import {
 } from "react-icons/fa";
 import ContactForm from "./contactForm";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About MbiyuInsights - mbiyuinsights.co.ke",
+  description:
+    "MbiyuInsights prides itself on begin your one stop platform for information about education, technology and lifestyle",
+  keywords: [
+    "CBC",
+    "TSC",
+    "KNEC",
+    "INTERNET",
+    "EDUCATION",
+    "ACADEMIC",
+    "TECHNOLOGY",
+  ],
+  openGraph: {
+    title: "About MbiyuInsights - mbiyuinsights.co.ke",
+    description:
+      "Your one stop platform for the lastest in education, academics, technology and lifestyle",
+    siteName: "MbiyuInsights",
+    images: [{ url: "", width: "", height: "" }],
+    locale: "en_KE",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About MbiyuInsights - mbiyuinsights.co.ke",
+    description:
+      "Your one stop platform for the lastest in education, academics, technology and lifestyle",
+    creator: "@petermbiyu",
+    images: ["https://example.com/seo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://mbiyuinsights.co.ke/about",
+  },
+};
 
 const Contact = () => {
   return (
