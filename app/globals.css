@@ -18,41 +18,44 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.blog-post h2 {
-  font-size: 20px;
-  font-weight: 600;
-}
-.blog-post p {
-  font-size: 1rem;
-  font-weight: 500;
-}
 .blog-post span {
   font-size: 1rem;
   font-weight: 400;
 }
-.terms h2 {
+
+.terms h2,
+.blog-post h2 {
   font-weight: 600;
-  font-size: 1.2rem;
-  margin-top: 10px;
+  font-size: 1.3rem;
+  margin-top: 1rem;
 }
-.terms p {
+.terms p,
+.blog-post p {
   letter-spacing: normal;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
 }
-.terms ol {
+.terms ol,
+.blog-post ol {
   list-style-type: lower-roman;
 }
-.terms ol li {
+.terms ol li,
+.blog-post ol li {
   margin-left: 2rem;
   font-style: italic;
 }
-.terms ul {
+.terms ul,
+.blog-post ul {
   list-style-type: disc;
 }
-.terms ul li {
+.terms ul li,
+.blog-post ul li {
   margin-left: 2rem;
   font-style: italic;
 }
-.terms a {
+.terms a,
+.blog-post a {
   text-decoration: underline;
   color: orange;
 }
