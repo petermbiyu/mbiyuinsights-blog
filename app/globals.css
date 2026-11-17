@@ -29,11 +29,18 @@ body {
   font-size: 1.3rem;
   margin-top: 1rem;
 }
+.terms h3,
+.blog-post h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
 .terms p,
 .blog-post p {
   letter-spacing: normal;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 300;
   margin-top: 0.5rem;
 }
 .terms ol,
@@ -58,6 +65,19 @@ body {
 .blog-post a {
   text-decoration: underline;
   color: orange;
+}
+
+.blog-post table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin: 5px auto;
+}
+.blog-post table tr {
+  border: 1px solid orange;
+}
+.blog-post table td {
+  border: 1px solid orange;
+  padding: 5px 10px;
 }
 
 .terms span {
